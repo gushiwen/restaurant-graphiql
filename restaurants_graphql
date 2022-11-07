@@ -1,0 +1,61 @@
+query getRestaurant($idd: Int = 1) {
+  restaurant(id: $idd) {
+    id
+    name
+    description
+    dishes {
+      name
+      price
+    }
+  }
+}
+
+query getRestaurants {
+  restaurants {
+    id
+    name
+    description
+    dishes {
+      name
+      price
+    }
+  }
+}
+
+mutation setRestaurants {
+  setRestaurant(input: {
+    id: 4,
+    name: "New restaurant",
+    description: "This is new restaurants's description",
+    dishes: [
+      {name:"dish 1", price:1001},
+      {name:"dish 2", price:1002}
+    ]
+  }) {
+    id
+    name
+    description
+    dishes {
+      name
+      price
+    }
+  }
+}
+
+mutation deleteRestaurant($idd: Int = 1) {
+  deleteRestaurant(id: $idd) {
+    ok
+  }
+}
+
+mutation editRestaurant($idd: Int = 1, $name: String!) {
+  editRestaurant(id: $idd, name: $name) {
+    id
+    name
+    description
+    dishes {
+      name
+      price
+    }
+  }
+}
